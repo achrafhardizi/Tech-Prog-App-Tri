@@ -48,10 +48,13 @@ Gnuplot : https://gnuplot.sourceforge.io/
 
 ### Auteur
 
+Achraf HARDIZI
 [<span style="background-color:#0366d6; color:#ffffff; padding:8px 16px; border-radius:6px; text-decoration:none;">@R0gueCs</span>](https://github.com/R0gueCS)\
 \
+Zakaria OUAKRIM
 [<span style="background-color:#0366d6; color:#ffffff; padding:8px 16px; border-radius:6px; text-decoration:none;">@ZakariaOuakrim</span>](https://github.com/ZakariaOuakrim)\
 \
+Darius KONSEBO
 [<span style="background-color:#0366d6; color:#ffffff; padding:8px 16px; border-radius:6px; text-decoration:none;">@dariuskonsebo</span>](https://github.com/dariuskonsebo)
 
 You can copy and paste this markdown code into a `README.md` file for your project, and make any necessary adjustments.
