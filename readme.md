@@ -28,6 +28,10 @@ Ce projet implémente divers algorithmes de tri en C et analyse leur complexité
 - Tri par Insertion
 - Tri Rapide
 - Tri Fusion
+- Tri Shaker
+- Tri Gnome
+- Tri Peigne
+- Tri Shell
 
 ### Analyse des Données
 
@@ -38,6 +42,8 @@ Les graphiques sont générés à l'aide du script Gnuplot plot.plg. Le script l
 
 ### Résultats
 Les résultats indiquent que [mentionnez les résultats ou observations notables ici].
+![Courbe qui Represente la complexite des differents Algorithmes de Trie](CourbeComplexiteAlgosTrie.png)\
+___Figure : Courbe qui Represente la complexite des differents Algorithmes de Trie___
 
 ### Améliorations Futures
 Implémenter des algorithmes de tri supplémentaires pour la comparaison.

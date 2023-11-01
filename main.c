@@ -6,16 +6,21 @@
 #define MAX 10000
 
 // Declaration des tableaus:
-double bulleComplexity[MAX];
-double insertionComplexity[MAX];
-double selectionComplexity[MAX];
-double fusionComplexity[MAX];
-double rapideComplexity[MAX];
+double tableComplexiteBulle[MAX];
+double tableComplexiteInsertion[MAX];
+double tableComplexiteSelection[MAX];
+double tableComplexiteFusion[MAX];
+double tableComplexiteRapide[MAX];
+double tableComplexiteShaker[MAX];
+double tableComplexiteGnome[MAX];
+double tableComplexitePeigne[MAX];
+double tableComplexiteShell[MAX];
 
 // Declaration des fonctions
 
 int *initTab(int *, int);
-void shuffleFisherYates(int *, int);
+void copierTableau(int *, int *, int);
+void moyennePonderee(const double *, double *, int, int);
 void triAvecComplexite(int *, int);
 void saveTimeCSV(int);
 void tracerGraph();
@@ -40,7 +45,7 @@ void copierTableau(int *source, int *destination, int n)
     }
 }
 
-void movingAverage(const double *data, double *smoothed_data, int num_points, int window_size)
+void moyennePonderee(const double *data, double *smoothed_data, int num_points, int window_size)
 {
     double sum;
     for (int i = 0; i < num_points; i++)
@@ -69,7 +74,15 @@ void triAvecComplexite(int *tableauNonTrie, int n)
     start = clock();
     triBulle(tableauNonTrie, n);
     end = clock();
-    bulleComplexity[n] = ((double)(end - start));
+    tableComplexiteBulle[n] = ((double)(end - start));
+
+    copierTableau(original, tableauNonTrie, n);
+
+    // Tri par selection
+    start = clock();
+    triSelection(tableauNonTrie, n);
+    end = clock();
+    tableComplexiteSelection[n] = ((double)(end - start));
 
     copierTableau(original, tableauNonTrie, n);
 
@@ -77,33 +90,115 @@ void triAvecComplexite(int *tableauNonTrie, int n)
     start = clock();
     triInsertion(tableauNonTrie, n);
     end = clock();
-    insertionComplexity[n] = ((double)(end - start));
+    tableComplexiteInsertion[n] = ((double)(end - start));
 
-    copierTableau(tableauNonTrie, original, n);
-
-    // Tri par selection
-    start = clock();
-    triSelection(tableauNonTrie, n);
-    end = clock();
-    selectionComplexity[n] = ((double)(end - start));
-
-    copierTableau(tableauNonTrie, original, n);
+    copierTableau(original, tableauNonTrie, n);
 
     // Tri par fusion
     start = clock();
     triFusion(tableauNonTrie, n);
     end = clock();
-    fusionComplexity[n] = ((double)(end - start));
+    tableComplexiteFusion[n] = ((double)(end - start));
 
-    copierTableau(tableauNonTrie, original, n);
+    copierTableau(original, tableauNonTrie, n);
 
     // Tri rapide
     start = clock();
     triRapide(tableauNonTrie, n);
     end = clock();
-    rapideComplexity[n] = ((double)(end - start));
+    tableComplexiteRapide[n] = ((double)(end - start));
+
+    copierTableau(original, tableauNonTrie, n);
+
+    // Tri Shaker
+    start = clock();
+    triShaker(tableauNonTrie, n);
+    end = clock();
+    tableComplexiteShaker[n] = ((double)(end - start));
+
+    copierTableau(original, tableauNonTrie, n);
+
+    // Tri Gnome
+    start = clock();
+    triGnome(tableauNonTrie, n);
+    end = clock();
+    tableComplexiteGnome[n] = ((double)(end - start));
+
+    copierTableau(original, tableauNonTrie, n);
+
+    // Tri Peigne
+    start = clock();
+    triPeigne(tableauNonTrie, n);
+    end = clock();
+    tableComplexitePeigne[n] = ((double)(end - start));
+
+    copierTableau(original, tableauNonTrie, n);
+
+    // Tri Shell
+    start = clock();
+    triShell(tableauNonTrie, n);
+    end = clock();
+    tableComplexiteShell[n] = ((double)(end - start));
 
     free(original);
+}
+
+void saveTimeCSV(int tailleMaximale)
+{
+    FILE *bulle = fopen("complexiteBulle.csv", "w");
+    FILE *insertion = fopen("complexiteInsertion.csv", "w");
+    FILE *selection = fopen("complexiteSelection.csv", "w");
+    FILE *fusion = fopen("complexiteFusion.csv", "w");
+    FILE *rapide = fopen("complexiteRapide.csv", "w");
+    FILE *shaker = fopen("complexiteShaker.csv", "w");
+    FILE *gnome = fopen("complexiteGnome.csv", "w");
+    FILE *peigne = fopen("complexitePeigne.csv", "w");
+    FILE *shell = fopen("complexiteShell.csv", "w");
+
+    int i;
+
+    double dataBulleLisse[tailleMaximale];
+    double dataInsertionLisse[tailleMaximale];
+    double dataSelectionLisse[tailleMaximale];
+    double dataFusionLisse[tailleMaximale];
+    double dataRapideLisse[tailleMaximale];
+    double dataShakerLisse[tailleMaximale];
+    double dataGnomeLisse[tailleMaximale];
+    double dataPeigneLisse[tailleMaximale];
+    double dataShellLisse[tailleMaximale];
+
+    moyennePonderee(tableComplexiteBulle, dataBulleLisse, tailleMaximale, 50);
+    moyennePonderee(tableComplexiteInsertion, dataInsertionLisse, tailleMaximale, 50);
+    moyennePonderee(tableComplexiteSelection, dataSelectionLisse, tailleMaximale, 50);
+    moyennePonderee(tableComplexiteFusion, dataFusionLisse, tailleMaximale, 50);
+    moyennePonderee(tableComplexiteRapide, dataRapideLisse, tailleMaximale, 50);
+    moyennePonderee(tableComplexiteShaker, dataShakerLisse, tailleMaximale, 50);
+    moyennePonderee(tableComplexiteGnome, dataGnomeLisse, tailleMaximale, 50);
+    moyennePonderee(tableComplexitePeigne, dataPeigneLisse, tailleMaximale, 50);
+    moyennePonderee(tableComplexiteShell, dataShellLisse, tailleMaximale, 50);
+
+    for (i = 0; i < tailleMaximale; i++)
+    {
+        fprintf(bulle, "%d,%.4f\n", i, dataBulleLisse[i]);
+        fprintf(insertion, "%d,%.4f\n", i, dataInsertionLisse[i]);
+        fprintf(selection, "%d,%.4f\n", i, dataSelectionLisse[i]);
+        fprintf(fusion, "%d,%.4f\n", i, dataFusionLisse[i]);
+        fprintf(rapide, "%d,%.4f\n", i, dataRapideLisse[i]);
+        fprintf(shaker, "%d,%.4f\n", i, dataShakerLisse[i]);
+        fprintf(gnome, "%d,%.4f\n", i, dataGnomeLisse[i]);
+        fprintf(peigne, "%d,%.4f\n", i, dataPeigneLisse[i]);
+        fprintf(shell, "%d,%.4f\n", i, dataShellLisse[i]);
+    }
+
+    fclose(bulle);
+    fclose(insertion);
+    fclose(selection);
+    fclose(fusion);
+    fclose(rapide);
+    fclose(shaker);
+    fclose(gnome);
+    fclose(peigne);
+    fclose(shell);
 }
 
 void tracerGraph()
@@ -124,7 +219,7 @@ int main()
 
     int *T = NULL;
     int i;
-    bulleComplexity[0] = insertionComplexity[0] = selectionComplexity[0] = fusionComplexity[0] = rapideComplexity[0] = 0;
+    tableComplexiteBulle[0] = tableComplexiteInsertion[0] = tableComplexiteSelection[0] = tableComplexiteFusion[0] = tableComplexiteRapide[0] = 0;
     for (i = 1; i <= tailleMax; i++)
     {
         T = initTab(T, i);
