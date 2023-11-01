@@ -45,10 +45,6 @@ Les résultats indiquent que [mentionnez les résultats ou observations notables
 ![Courbe qui Represente la complexite des differents Algorithmes de Trie](CourbeComplexiteAlgosTrie.png)\
 ___Figure : Courbe qui Represente la complexite des differents Algorithmes de Trie___
 
-### Améliorations Futures
-Implémenter des algorithmes de tri supplémentaires pour la comparaison.
-Inclure des fonctionnalités de visualisation de données avancées dans le script de tracé de graphiques.
-
 ### Références
 Gnuplot : https://gnuplot.sourceforge.io/
 
