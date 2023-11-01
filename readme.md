@@ -1,75 +1,57 @@
-```
-void triAvecComplexite(int *T, int n)
-{
-    clock_t start, end;
-    int temp2[n];
-    double smoothedBulle = 0;
-    double smoothedInsertion = 0;
-    double smoothedSelection = 0;
-    double smoothedFusion = 0;
-    double smoothedRapide = 0;
+# Analyse des Algorithmes de Tri en C
 
-    for (int i = 1; i <= n; i++)
-    {
-        T = initTab(T, i);
+Ce projet implémente divers algorithmes de tri en C et analyse leur complexité temporelle pour comparer leurs performances.
 
-        // Perform sorting and measure time
-        // ...
+## Structure des Fichiers
 
-        // Calculate execution times and apply moving average
-        // Bulle
-        start = clock();
-        triBulle(T, i);
-        end = clock();
-        bulleComplexity[i] = ((double)(end - start));
-        smoothedBulle += bulleComplexity[i];
-        shuffleFisherYates(T, i);
+- `main.c` : Le programme principal qui génère des données, effectue des tris et analyse la complexité.
+- `methodeTri.h` : Fichier d'en-tête contenant les implémentations des algorithmes de tri.
+- `plot.plg` : Script Gnuplot pour générer des graphiques basés sur les données.
 
-        // Insertion
-        start = clock();
-        triInsertion(T, i);
-        end = clock();
-        insertionComplexity[i] = ((double)(end - start));
-        smoothedInsertion += insertionComplexity[i];
-        shuffleFisherYates(T, i);
+## Compilation et Exécution
 
-        // Selection
-        start = clock();
-        triSelection(T, i);
-        end = clock();
-        selectionComplexity[i] = ((double)(end - start));
-        smoothedSelection += selectionComplexity[i];
-        shuffleFisherYates(T, i);
+1. Assurez-vous d'avoir `gcc` et `gnuplot` installés sur votre système.
+2. Compilez le programme en exécutant :
 
-        // Fusion
-        start = clock();
-        triFusion(T,0, i - 1);
-        end = clock();
-        fusionComplexity[i] = ((double)(end - start));
-        smoothedFusion += fusionComplexity[i];
-        shuffleFisherYates(T, i);
+   ```bash
+   gcc -o sorting main.c
 
-        // Rapide
-        start = clock();
-        triRapide(T, 0, i - 1);
-        end = clock();
-        rapideComplexity[i] = ((double)(end - start));
-        smoothedRapide += rapideComplexity[i];
+3. Exécutez le programme :
+    ./sorting
 
-        // Apply moving average to the smoothed data
-        if (i >= MOVING_AVERAGE_WINDOW)
-        {
-            bulleComplexity[i] = smoothedBulle / MOVING_AVERAGE_WINDOW;
-            insertionComplexity[i] = smoothedInsertion / MOVING_AVERAGE_WINDOW;
-            selectionComplexity[i] = smoothedSelection / MOVING_AVERAGE_WINDOW;
-            fusionComplexity[i] = smoothedFusion / MOVING_AVERAGE_WINDOW;
-            rapideComplexity[i] = smoothedRapide / MOVING_AVERAGE_WINDOW;
-            smoothedBulle -= bulleComplexity[i - MOVING_AVERAGE_WINDOW];
-            smoothedInsertion -= insertionComplexity[i - MOVING_AVERAGE_WINDOW];
-            smoothedSelection -= selectionComplexity[i - MOVING_AVERAGE_WINDOW];
-            smoothedFusion -= fusionComplexity[i - MOVING_AVERAGE_WINDOW];
-            smoothedRapide -= rapideComplexity[i - MOVING_AVERAGE_WINDOW];
-        }
-    }
-}
-```
+4. Le programme générera des données et tracera des graphiques à l'aide de gnuplot.
+
+### Algorithmes de Tri
+
+- Tri à Bulles
+- Tri par Sélection
+- Tri par Insertion
+- Tri Rapide
+- Tri Fusion
+
+### Analyse des Données
+
+Le programme génère des données aléatoires et applique divers algorithmes de tri pour mesurer leur temps d'exécution. La complexité temporelle est enregistrée et ultérieurement tracée pour analyser et comparer les performances des algorithmes.
+
+### Tracé des Graphiques
+Les graphiques sont générés à l'aide du script Gnuplot plot.plg. Le script lit les données à partir de fichiers CSV et trace des graphiques de complexité temporelle pour différents algorithmes de tri.
+
+### Résultats
+Les résultats indiquent que [mentionnez les résultats ou observations notables ici].
+
+### Améliorations Futures
+Implémenter des algorithmes de tri supplémentaires pour la comparaison.
+Inclure des fonctionnalités de visualisation de données avancées dans le script de tracé de graphiques.
+
+### Références
+Gnuplot : https://gnuplot.sourceforge.io/
+
+### Auteur
+
+[<span style="background-color:#0366d6; color:#ffffff; padding:8px 16px; border-radius:6px; text-decoration:none;">@R0gueCs</span>](https://github.com/R0gueCS)\
+\
+[<span style="background-color:#0366d6; color:#ffffff; padding:8px 16px; border-radius:6px; text-decoration:none;">@ZakariaOuakrim</span>](https://github.com/ZakariaOuakrim)\
+\
+[<span style="background-color:#0366d6; color:#ffffff; padding:8px 16px; border-radius:6px; text-decoration:none;">@dariuskonsebo</span>](https://github.com/dariuskonsebo)
+
+You can copy and paste this markdown code into a `README.md` file for your project, and make any necessary adjustments.
