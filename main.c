@@ -19,6 +19,7 @@ double tableComplexiteShell[MAX];
 // Declaration des fonctions
 
 int *initTab(int *, int);
+int *initTabDesc(int *, int);
 void copierTableau(int *, int *, int);
 void moyennePonderee(const double *, double *, int, int);
 void triAvecComplexite(int *, int);
@@ -34,6 +35,19 @@ int *initTab(int *T, int n)
     {
         T[i] = rand() % 256;
     }
+    return T;
+}
+
+int *initTabDesc(int *T, int n)
+{
+    int i;
+    T = (int *)malloc(sizeof(int) * n);
+
+    for (i = 0; i < n; i++)
+    {
+        T[i] = n - i;
+    }
+
     return T;
 }
 
@@ -167,15 +181,15 @@ void saveTimeCSV(int tailleMaximale)
     double dataPeigneLisse[tailleMaximale];
     double dataShellLisse[tailleMaximale];
 
-    moyennePonderee(tableComplexiteBulle, dataBulleLisse, tailleMaximale, 50);
-    moyennePonderee(tableComplexiteInsertion, dataInsertionLisse, tailleMaximale, 50);
-    moyennePonderee(tableComplexiteSelection, dataSelectionLisse, tailleMaximale, 50);
-    moyennePonderee(tableComplexiteFusion, dataFusionLisse, tailleMaximale, 50);
-    moyennePonderee(tableComplexiteRapide, dataRapideLisse, tailleMaximale, 50);
-    moyennePonderee(tableComplexiteShaker, dataShakerLisse, tailleMaximale, 50);
-    moyennePonderee(tableComplexiteGnome, dataGnomeLisse, tailleMaximale, 50);
-    moyennePonderee(tableComplexitePeigne, dataPeigneLisse, tailleMaximale, 50);
-    moyennePonderee(tableComplexiteShell, dataShellLisse, tailleMaximale, 50);
+    moyennePonderee(tableComplexiteBulle, dataBulleLisse, tailleMaximale, 150);
+    moyennePonderee(tableComplexiteInsertion, dataInsertionLisse, tailleMaximale, 150);
+    moyennePonderee(tableComplexiteSelection, dataSelectionLisse, tailleMaximale, 150);
+    moyennePonderee(tableComplexiteFusion, dataFusionLisse, tailleMaximale, 150);
+    moyennePonderee(tableComplexiteRapide, dataRapideLisse, tailleMaximale, 150);
+    moyennePonderee(tableComplexiteShaker, dataShakerLisse, tailleMaximale, 150);
+    moyennePonderee(tableComplexiteGnome, dataGnomeLisse, tailleMaximale, 150);
+    moyennePonderee(tableComplexitePeigne, dataPeigneLisse, tailleMaximale, 150);
+    moyennePonderee(tableComplexiteShell, dataShellLisse, tailleMaximale, 150);
 
     for (i = 0; i < tailleMaximale; i++)
     {
@@ -222,7 +236,7 @@ int main()
     tableComplexiteBulle[0] = tableComplexiteInsertion[0] = tableComplexiteSelection[0] = tableComplexiteFusion[0] = tableComplexiteRapide[0] = 0;
     for (i = 1; i <= tailleMax; i++)
     {
-        T = initTab(T, i);
+        T = initTabDesc(T, i);
         triAvecComplexite(T, i);
     }
     saveTimeCSV(tailleMax);
