@@ -41,9 +41,15 @@ Le programme génère des données aléatoires et applique divers algorithmes de
 Les graphiques sont générés à l'aide du script Gnuplot plot.plg. Le script lit les données à partir de fichiers CSV et trace des graphiques de complexité temporelle pour différents algorithmes de tri.
 
 ### Résultats
-Les résultats indiquent que [mentionnez les résultats ou observations notables ici].
-![Courbe qui Represente la complexite des differents Algorithmes de Trie](CourbeComplexiteAlgosTrie.png)\
-___Figure : Courbe qui Represente la complexite des differents Algorithmes de Trie___
+
+![Courbe qui Represente la complexite des differents Algorithmes de Trie d'un tableau Aleatoire](CourbeComplexiteAlgosTrie.png)\
+___Figure : Courbe qui Represente la complexite des differents Algorithmes de Trie d'un tableau Aleatoire___
+
+![Courbe qui Represente la complexite des differents Algorithmes de Trie d'un tableau Asc](CourbeComplexiteAlgosTrieAsc.png)\
+___Figure : Courbe qui Represente la complexite des differents Algorithmes de Trie d'un tableau Asc___
+
+![Courbe qui Represente la complexite des differents Algorithmes de Trie](CourbeComplexiteAlgosTrieDesc.png)\
+___Figure : Courbe qui Represente la complexite des differents Algorithmes de Trie d'un tableau Desc___
 
 ### Références
 Gnuplot : https://gnuplot.sourceforge.io/
@@ -58,5 +64,3 @@ Zakaria OUAKRIM
 \
 Darius KONSEBO
 [<span style="background-color:#0366d6; color:#ffffff; padding:8px 16px; border-radius:6px; text-decoration:none;">@dariuskonsebo</span>](https://github.com/dariuskonsebo)
-
-You can copy and paste this markdown code into a `README.md` file for your project, and make any necessary adjustments.

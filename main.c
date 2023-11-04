@@ -26,7 +26,7 @@ void copierTableau(int *, int *, int);
 void moyennePonderee(const double *, double *, int, int);
 void triAvecComplexite(int *, int);
 void saveTimeCSV(int);
-void tracerGraph();
+void tracerGraph(char[]);
 
 int *initTab(int *T, int n)
 {
@@ -230,14 +230,6 @@ void saveTimeCSV(int tailleMaximale)
     fclose(shell);
 }
 
-// void tracerGraph(char courbeName[20])
-// {
-//     char cmd[100];
-//     char commande[40] = "gnuplot";
-//     strcpy(cmd, "gnuplot plot.plg");
-//     system(cmd);
-// }
-
 void tracerGraph(char courbeName[20])
 {
     char cmd[100];
@@ -266,7 +258,6 @@ int main()
     printf("1. Ascendant\n");
     printf("2. Descendant\n");
     printf("3. Aléatoire\n");
-    // printf("4. Tous les cas (. Generation d'une image contient trois imags combinees)");
     int choice;
     printf("Entrez le numéro correspondant à votre choix : ");
     scanf("%d", &choice);
@@ -300,15 +291,6 @@ int main()
         saveTimeCSV(tailleMax);
         tracerGraph("courbeAleat.plg");
         break;
-    // case 4:
-    //     for (i = 1; i <= tailleMax; i++)
-    //     {
-    //         T = initTab(T, i);
-    //         triAvecComplexite(T, i);
-    //     }
-    //     saveTimeCSV(tailleMax);
-    //     tracerGraph("courbeAleat.plg");
-    //     break;
     default:
         printf("Choix invalide.\n");
         break;
