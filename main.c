@@ -4,7 +4,7 @@
 #include <string.h>
 #include "methodeTri.h"
 #define MAX 9999
-#define WINDOW_SIZE 80
+#define WINDOW_SIZE 100
 
 // Declaration des tableaus:
 double tableComplexiteBulle[MAX];
@@ -82,7 +82,7 @@ void moyennePonderee(const double *data, double *smoothed_data, int num_points, 
         sum = 0.0;
         int count = 0;
 
-        for (int j = i; j < i + window_size && i + window_size < num_points; j++)
+        for (int j = i; j < i + (window_size / 2) && i + (window_size / 2) < num_points; j++)
         {
             sum += data[j];
             count++;

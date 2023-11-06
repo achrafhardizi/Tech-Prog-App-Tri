@@ -40,12 +40,15 @@ void triSelection(int T[], int n)
     for (i = 0; i < n - 1; i++)
     {
         min = i;
-        for (j = i; j < n; j++)
+        for (j = i + 1; j < n; j++)
             if (T[j] < T[min])
                 min = j;
-        temp = T[i];
-        T[i] = T[min];
-        T[min] = temp;
+        if (min != i)
+        {
+            temp = T[i];
+            T[i] = T[min];
+            T[min] = temp;
+        }
     }
 }
 
@@ -89,7 +92,7 @@ void triRapide(int T[], int n)
         courant++;
     }
     triRapide(T, mur - 1);
-    triRapide(T + mur, n - mur);
+    triRapide(T + mur - 1, n - mur + 1);
 }
 
 void fusion(int *a, int n, int m)
@@ -122,41 +125,28 @@ void triFusion(int T[], int n)
 
 void triShaker(int T[], int n)
 {
-    int i, j, sens = 1;
-    int debut = 0, fin = n - 1;
     int permutation;
+    int en_cours = 0, sens = 1;
+    int debut = 1, fin = n - 1;
     do
     {
         permutation = 0;
+        while (((sens == 1) && (en_cours < fin)) || ((sens == -1) && (en_cours > debut)))
+        {
+            en_cours += sens;
+            if (T[en_cours] < T[en_cours - 1])
+            {
+                int temp = T[en_cours];
+                T[en_cours] = T[en_cours - 1];
+                T[en_cours - 1] = temp;
+                permutation = 1;
+            }
+        }
         if (sens == 1)
-        {
-            for (i = debut; i < fin; i++)
-            {
-                if (T[i] > T[i + 1])
-                {
-                    int temp = T[i];
-                    T[i] = T[i + 1];
-                    T[i + 1] = temp;
-                    permutation = 1;
-                }
-            }
             fin--;
-        }
         else
-        {
-            for (j = fin; j > debut; j--)
-            {
-                if (T[j] < T[j - 1])
-                {
-                    int temp = T[j];
-                    T[j] = T[j - 1];
-                    T[j - 1] = temp;
-                    permutation = 1;
-                }
-            }
             debut++;
-        }
-        sens = 1 - sens;
+        sens = -sens;
     } while (permutation);
 }
 
@@ -185,14 +175,14 @@ void triGnome(int T[], int n)
 void triPeigne(int T[], int n)
 {
     int gap = n;
-    bool permutation = true;
+    int permutation = 1;
 
     while (permutation || gap > 1)
     {
         gap = (gap * 10) / 13; // Réduction de l'écart
         if (gap < 1)
             gap = 1;
-        permutation = false;
+        permutation = 0;
 
         for (int en_cours = 0; en_cours < n - gap; en_cours++)
         {
@@ -201,7 +191,7 @@ void triPeigne(int T[], int n)
                 int temp = T[en_cours];
                 T[en_cours] = T[en_cours + gap];
                 T[en_cours + gap] = temp;
-                permutation = true;
+                permutation = 1;
             }
         }
     }
