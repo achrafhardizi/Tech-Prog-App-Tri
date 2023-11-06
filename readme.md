@@ -6,7 +6,9 @@ Ce projet implémente divers algorithmes de tri en C et analyse leur complexité
 
 - `main.c` : Le programme principal qui génère des données, effectue des tris et analyse la complexité.
 - `methodeTri.h` : Fichier d'en-tête contenant les implémentations des algorithmes de tri.
-- `plot.plg` : Script Gnuplot pour générer des graphiques basés sur les données.
+- `courbeAleat.plg` : Script Gnuplot pour générer des graphiques basés sur les données __Aleatoire__.
+- `courbeAsc.plg` : Script Gnuplot pour générer des graphiques basés sur les données __Triage Ascendant__.
+- `courbeDesc.plg` : Script Gnuplot pour générer des graphiques basés sur les données __Triage Descendant__.
 
 ## Compilation et Exécution
 
@@ -17,9 +19,13 @@ Ce projet implémente divers algorithmes de tri en C et analyse leur complexité
    gcc -o sorting main.c
 
 3. Exécutez le programme :
+    ```bash
     ./sorting
 
-4. Le programme générera des données et tracera des graphiques à l'aide de gnuplot.
+4. Le programme générera des données et tracera des graphiques à l'aide de gnuplot en des Images `.png`.
+    - CourbeComplexiteAlgosTrie.png
+    - CourbeComplexiteAlgosTrieAsc.png
+    - CourbeComplexiteAlgosTrieDesc.png
 
 ### Algorithmes de Tri
 
@@ -38,18 +44,18 @@ Ce projet implémente divers algorithmes de tri en C et analyse leur complexité
 Le programme génère des données aléatoires et applique divers algorithmes de tri pour mesurer leur temps d'exécution. La complexité temporelle est enregistrée et ultérieurement tracée pour analyser et comparer les performances des algorithmes.
 
 ### Tracé des Graphiques
-Les graphiques sont générés à l'aide du script Gnuplot plot.plg. Le script lit les données à partir de fichiers CSV et trace des graphiques de complexité temporelle pour différents algorithmes de tri.
+Les graphiques sont générés à l'aide des scripts Gnuplot. Les scripts lit les données à partir de fichiers CSV et trace des graphiques de complexité temporelle pour différents algorithmes de tri.
 
 ### Résultats
 
 ![Courbe qui Represente la complexite des differents Algorithmes de Trie d'un tableau Aleatoire](CourbeComplexiteAlgosTrie.png)\
-___Figure : Courbe qui Represente la complexite des differents Algorithmes de Trie d'un tableau Aleatoire___
+___Figure 1: Courbe qui Represente la complexite des differents Algorithmes de Trie d'un tableau Aleatoire___
 
 ![Courbe qui Represente la complexite des differents Algorithmes de Trie d'un tableau Asc](CourbeComplexiteAlgosTrieAsc.png)\
-___Figure : Courbe qui Represente la complexite des differents Algorithmes de Trie d'un tableau Asc___
+___Figure 2: Courbe qui Represente la complexite des differents Algorithmes de Trie d'un tableau Asc___
 
 ![Courbe qui Represente la complexite des differents Algorithmes de Trie](CourbeComplexiteAlgosTrieDesc.png)\
-___Figure : Courbe qui Represente la complexite des differents Algorithmes de Trie d'un tableau Desc___
+___Figure 3: Courbe qui Represente la complexite des differents Algorithmes de Trie d'un tableau Desc___
 
 ### Références
 Gnuplot : https://gnuplot.sourceforge.io/
