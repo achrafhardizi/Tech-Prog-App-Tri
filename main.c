@@ -32,10 +32,9 @@ int *initTab(int *T, int n)
 {
     int i;
     T = (int *)malloc(sizeof(int) * n);
-    srand(time(NULL));
     for (i = 0; i < n; i++)
     {
-        T[i] = rand() % 256;
+        T[i] = rand() % n;
     }
     return T;
 }
